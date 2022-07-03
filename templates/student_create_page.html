@@ -1,0 +1,169 @@
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links Of CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ma5-menu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/dark-mode.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}">
+    <!-- Title -->
+    <title>Aalim</title>
+</head>
+
+<body>
+    <!-- Start Preloader Area -->
+    <div class="preloader" id="loader-style">
+        <div class="preloader-wrap">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Start Section-title Area -->
+    <div class="section-title mb-0 bg-color ptb-15">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <a href="{% url 'aalim_home_page' %}">
+                        <i class="ri-arrow-left-s-line"></i>
+                        New Student
+                    </a>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Section-title Area -->
+
+    <div class="bg-color-f5f8ff border-radius-20">
+        <!-- Start Form Validation Page Area -->
+        <div class="form-validation-area ptb-30">
+            <div class="container">
+
+
+                <div class="contact-form custom">
+                    <form method="post" action="{% url 'add_new_student' %}" enctype="multipart/form-data" id="form_id">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <!-- <input type="text" name="name" id="name" class="form-control" value="Salman Afroz"> -->
+                            {{form.name}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Father Name</label>
+                            <!-- <input type="text" name="name" id="name" class="form-control" value="Ayaz Afroz"> -->
+                            {{form.father_name}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Address</label>
+                            <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                data-error="Write your message"></textarea> -->
+                                {{form.address}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Aadhaar Number</label>
+                            <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                        data-error="Write your message"></textarea> -->
+                            {{form.aadhaar_number}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Aadhaar(Front Photo)</label>
+                            <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                        data-error="Write your message"></textarea> -->
+                            {{form.front_adhaar}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Aadhaar (Back Photo)</label>
+                            <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                        data-error="Write your message"></textarea> -->
+                            {{form.back_adhaar}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        {% if maktab_list.count > 1 %}
+                        <div class="form-group">
+                            <label>Maktab</label>
+                            <!-- <input type="text" name="name" id="name" class="form-control" value="Salman Afroz"> -->
+                            {{form.maktab}}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <button type="submit" class="default-btn" onclick="button_click(this, 'form_id')">
+                                Add Now
+                            </button>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Links of JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/carousel-thumbs.min.js' %}"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+    <script src="{% static 'assets/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/dark-mode-switch.min.js' %}"></script>
+    <script src="{% static 'assets/js/ma5-menu.min.js' %}"></script>
+    <script src="{% static 'assets/js/calendar.js' %}"></script>
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/js/apex-custom-pie-donut-chart.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+<script>
+    document.getElementById('id_front_adhaar').classList.add('form-control')
+    document.getElementById('id_back_adhaar').classList.add('form-control')
+    
+    function button_click(e, form_id) {
+        var form = document.getElementById(form_id);
+        // var submitButton = document.getElementById(e.id);
+
+        form.addEventListener('submit', function () {
+            $("cover-spin").show(0);
+            // Disable the submit button
+            e.setAttribute('disabled', 'disabled');
+            // Change the "Submit" text
+            e.innerHTML = 'Please wait...';
+
+        }, false);
+    }
+    
+</script>
+
+</html>

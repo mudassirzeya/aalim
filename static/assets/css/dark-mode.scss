@@ -1,0 +1,550 @@
+/*!
+ * Dark Mode Switch v1.0.1 (https://github.com/coliff/dark-mode-switch)
+ * Copyright 2021 C.Oliff
+ * Licensed under MIT (https://github.com/coliff/dark-mode-switch/blob/main/LICENSE)
+ */
+$white-color: #ffffff;
+$black-bg-color: #111111;
+$black-color: #020202;
+[qkita-theme="dark"] {
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        color: $white-color;
+    }
+    background-color: $black-bg-color;
+    color: #ffffff;
+    .bg-color-f5f8ff {
+        background-color: $black-bg-color;
+    }
+    .features-area {
+        background-color: $black-color;
+    }
+    .footer-area {
+        background-color: $black-color;
+    }
+    .app-navbar-area {
+        &::before {
+            background-color: $black-color;
+        }
+    }
+    .section-title {
+        h2 {
+            color: $white-color;
+        }
+    }
+    .features-content {
+        p {
+            color: $black-color;
+        }
+    }
+    .support-content {
+        p {
+            color: $black-color;
+        }
+    }
+    .single-customer {
+        background-color: $black-color;
+        box-shadow: 0px 3px 0px 0px #1c1c1c;
+        p {
+            color: $white-color;
+        }
+        span {
+            color: $white-color;
+        }
+        h3 {
+            color: $white-color;
+        }
+        h4 {
+            color: $white-color;
+        }
+    }
+    .components-support {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .single-thinking  {
+        background-color: $black-color;
+        h3 {
+            color: $white-color;
+        }
+        p  {
+            color: $white-color;
+        }
+    }
+    .light-and-dark {
+        .dark-content {
+            span {
+                color: $black-color;
+            }
+        }
+    }
+    .footer-content {
+        .footer-logo {
+            color: $white-color;
+        }
+        .policy {
+            a {
+                color: $white-color;
+                &::before {
+                    background-color: $black-bg-color;
+                }
+            }
+        }
+        ul {
+            border-color: $black-bg-color;
+        }
+    }
+    .components-list {
+        li {
+            a {
+                color: $white-color;
+                i {
+                    background-color: $white-color;
+                }
+            }
+        }
+    }
+    .ma5menu__panel {
+        background-color: $black-bg-color;
+    }
+    .ma5menu__panel > ul li {
+        border-bottom: 1px solid #262626;
+    }
+    .ma5menu__panel > ul li img {
+        background-color: $white-color;
+        border-radius: 8px;
+    }
+    .ma5menu__panel > ul li a {
+        color: $white-color;
+    }
+    .ma5menu__btn--enter {
+        background-color: #eef;
+    }
+    .ma5menu__btn--leave {
+        background-color: #eef;
+        color: $white-color;
+    }
+    .accordion-button {
+        background-color: $black-color;
+        color: $white-color;
+    }
+    .light-and-dark {
+        background-color: $black-color;
+        .dark-content {
+            h3 {
+                color: $white-color;
+            }
+            span {
+                color: $white-color;
+            }
+        }
+    }
+    .alert.alert-primary.custom {
+        background-color: $black-bg-color;
+        h3 {
+            color: $white-color;
+        }
+        p {
+            color: $white-color;
+        }
+    }
+    .delete-confirem {
+        background-color: $black-color;
+        h1 {
+            color: $white-color;
+        }
+    }
+    .action-sheets-list li .btn-primary {
+        color: $white-color;
+    }
+    .offcanvas {
+        background-color: $black-color;
+    }
+    .offcanvas.offcanvas-bottom.custom h3 {
+        color: $white-color;
+    }
+    .form-control {
+        background-color: #0e0e0e !important;
+        border: 1px solid #242424  !important;
+        color: $white-color !important;
+    }
+    label {
+        color: $white-color !important;
+    }
+    .share-list li a span {
+        color: $white-color;
+    }
+    .share-thumb li a span {
+        color: $white-color;
+    }
+    .success-box {
+        background-color: $black-bg-color;
+    }
+    .warning-box {
+        background-color: $black-bg-color;
+    }
+    .logon-form .form-group span::before {
+        background-color: #181818;
+    }
+    .logon-form .form-group span::after {
+        background-color: $black-bg-color !important;
+    }
+    .app-navbar-area.default-menu {
+        background-color: #020202;
+        border: 1px solid #2c2c2c;
+    }
+    .app-navbar-area.default-menu ul li a .icon {
+        color: $white-color;
+    }
+    .app-navbar-area.default-menu ul li a span {
+        color: $white-color;
+    }
+    .app-navbar-area ul li a.active .icon {
+        border: 2px solid #020202;
+    }
+    .breadcrumb-nav.custom {
+        background-color: #020202;
+        border: 1px solid #202020;
+    }
+    .breadcrumb-nav.custom .breadcrumb .breadcrumb-item {
+        a {
+            color: #f7f7f7;
+        }
+        &.active {
+            color: #f7f7f7;
+        }
+    }
+    .components-list li a span {
+        color: $white-color;
+    }
+    .dropdown-wrap .dropdown.custom .dropdown-menu {
+        border-color: #111111;
+    }
+    .dropdown-menu {
+        background-color: #020202;
+    }
+    .dropdown-wrap .dropdown.custom .dropdown-menu li .dropdown-item {
+        border-color: $black-bg-color;
+        color: $white-color;
+    }
+    .error-page-card {
+        background-color: $black-color;
+    }
+    .file-upload-wrap label[for="et_pb_contact_brand_file_request_0"] {
+        background-color: $black-color;
+    }
+    .single-column {
+        background-color: $black-color;
+        border: 1px solid #343434;
+    }
+    .google-fonts-list li h3 {
+        color: $white-color;
+    }
+    .page-link {
+        background-color: $black-color;
+        border: 1px solid $black-bg-color;
+    }
+    .pagination.custom .page-item .page-link {
+        border-color: $black-bg-color;
+    }
+    .pagination.custom.style-three .page-item .page-link.text {
+        color: $white-color;
+    }
+    .pagination.custom .page-item .page-link {
+        color: $white-color;
+    }
+    .progress-wrap.style-three .progress .progress-bar span {
+        color: $white-color;
+    }
+    .radio-wrap .checkmark {
+        background-color: $white-color;
+    }
+    .radio-wrap .single-radio input:checked ~ .checkmark {
+        background-color: $white-color;
+    }
+    .offcanvas-wrap .btn-primary {
+        background-color: #020202;
+        border-color: #242424;
+        color: $white-color;
+    }
+    .timeline li {
+        background-color: $black-color;
+        h3 {
+            color: $white-color;
+        }
+    }
+    .timeline-year li {
+        background-color: $black-color;
+        h3 {
+            color: $white-color;
+        }
+    }
+    .table-striped>tbody>tr:nth-of-type(odd)>* {
+        color: $white-color;
+    }
+    .table>:not(caption)>*>* {
+        color: $white-color;
+    }
+    .section-title .option-item .search-overlay.search-popup {
+        background-color: #363636;
+    }
+    .section-title .option-item .search-overlay.search-popup .search-form .search-input {
+        background-color: #242424;
+        border: 1px solid #484848;
+    }
+    .others-option .option-item .search-overlay.search-popup {
+        background-color: #363636 !important;
+    }
+    .others-option .option-item .search-overlay.search-popup .search-form .search-input {
+        background-color: #242424;
+        border: 1px solid #484848 !important;
+        color: $white-color !important;
+    }
+    .profile-content h3 {
+        color: $white-color;
+    }
+    .bg-color-e1e6ff {
+        background-color: $black-color;
+    }
+    .single-counter h2 {
+        color: $white-color;
+    }
+    .single-team h3 {
+        color: $white-color;
+    }
+    .privacy-settings li h3 {
+        color: $white-color;
+    }
+    .chats-area {
+        background-color: $black-bg-color;
+    }
+    .chat-details .chat-details-list li p {
+        background-color: $black-color;
+    }
+    .single-product .product-content h3 a {
+        color: $white-color;
+    }
+    .cart-content {
+        background-color: $black-color;
+    }
+    .cart-content li h3 {
+        color: $white-color;
+    }
+    .cart-total-content {
+        background-color: $black-color;
+    }
+    .invoice-wrap {
+        background-color: $black-color;
+    }
+    .schedule-content {
+        background-color: $black-color;
+    }
+    .schedule-content h3 {
+        color: $white-color;
+        border-color: $black-bg-color;
+    }
+    .calendar {
+        background-color: $black-color;
+    }
+    .calendar_weekdays {
+        background-color: $black-color;
+    }
+    .calendar_content {
+        background-color: $black-color;
+    }
+    .calendar_header h2 {
+        color: $white-color;
+    }
+    .calendar_weekdays div {
+        color: $white-color;
+    }
+    .calendar_content div {
+        color: $white-color;
+    }
+    .calendar_content div {
+        color: #766d6d;
+    }
+    .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+        background-color: $black-color;
+        color: $white-color;
+    }
+    .accordion-item .accordion-body {
+        background-color: $black-color;
+    }
+    .single-blog-item {
+        background-color: $black-color;
+    }
+    .single-blog-item h3 a {
+        color: $white-color;
+    }
+    .single-blog-item ul li a {
+        color: $white-color;
+    }
+    .main-content-text {
+        background-color: $black-color;
+    }
+    .main-content-text h3 {
+        color: $white-color;
+    }
+    .ma5menu__leave {
+        color: $white-color;
+    }
+    .ma5menu__leave {
+        border-bottom: 1px solid #262626;
+    }
+    .chat-details {
+        .chat-details-list { 
+            &::-webkit-scrollbar-track { 
+                background: #525252;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #020202;
+            }
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {  
+                background: #020202;
+            }
+        }
+    }
+    .chat-list {
+        &::-webkit-scrollbar-track { 
+            background: #525252;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #020202;
+        }
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {  
+            background: #020202;
+        }
+    }
+    .timeline {
+        border-left: 2px solid #020202;
+    }
+    .timeline-year {
+        border-left: 2px solid #020202;
+    }
+    .timeline-year li::before {
+        background-color: #020202;
+        border-color: #020202;
+    }
+    .tab-style.style-four button {
+        color: $white-color;
+        &::before {
+            color: $white-color;
+        }
+    }
+    .table>:not(:first-child) {
+        border-top: 2px solid #020202;
+    }
+    .customer-slide {
+        background-color: #020202;
+        box-shadow: 0px 3px 0px 0px #1e1e1e;
+    }
+    .single-customer.style-two .customer-content {
+        background: #111;
+        box-shadow: none !important;
+    }
+    .progress {
+        background-color: #020202;
+    }
+    .progress-wrap.custom-two .progress {
+        background-color: #020202;
+    }
+    .progress-wrap.custom-two .progress .progress-bar span {
+        color: $white-color;
+    }
+    .pagination {
+        &.style-eight {
+            .page-item {
+                .page-link {
+                    color: $white-color;
+                }
+            }
+        }
+    }
+    .offcanvas-title {
+        color: $white-color;
+    }
+    .offcanvas-header {
+        h5 {
+            color: $white-color;
+        }
+    }
+    .contact-form .form-group .form-control {
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+    }
+    .customer-slide {
+        background-color: #020202;
+        box-shadow: 0px 3px 0px 0px #1e1e1e;
+    }
+    .single-support .support-content {
+        h3 {
+            color: $black-bg-color;
+        }
+    }
+    .single-features .features-content {
+        h3 {
+            color: $black-bg-color;
+        }
+    }
+    .features-area::before {
+        background-color: #020202;
+    }
+    .contact-form .form-group .form-control {
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+    }
+    .accordion-item {
+        background-color: transparent;
+    }
+    .check-box li .custom-control.overflow-checkbox .overflow-control-indicator::before {
+        border-right: 7px solid #111111;
+    }
+    .apexcharts-legend-text {
+        color: $white-color !important;
+    }
+    .cart-content li .product-quantity .input-counter .minus-btn, .cart-content li .product-quantity .input-counter .plus-btn {
+        background-color: #111111;
+        color: $white-color;
+        border-color: #282828;
+    }
+    .cart-content li .product-quantity .input-counter input {
+        color: #ffffff;
+        background-color: #4d4d4d;
+        border: 1px solid #6c6c6c;
+    }
+    .single-card-item {
+        background-color: #020202;
+        a {
+            color: $white-color;
+        }
+    }
+    .blog-details-content {
+        .blog-details-wrap {
+            background-color: #020202;
+            margin-top: -10px;
+            h3 {
+                color: $white-color;
+            }
+        }
+        img {
+            width: 100%;
+            border-radius: 15px;
+        }
+    }
+    .blog-details-content .blog-details-wrap ul li a {
+        color: $white-color;
+    }
+    .accordion-item {
+        background-color: transparent;
+    }
+    .product-details-desc {
+        h3 {
+            color: $white-color;
+        }
+    }
+}

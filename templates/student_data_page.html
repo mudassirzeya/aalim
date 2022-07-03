@@ -1,0 +1,315 @@
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links Of CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ma5-menu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/dark-mode.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}">
+    <!-- Title -->
+    <title>Darul Qaza</title>
+</head>
+
+<body>
+    <!-- Start Preloader Area -->
+    <div class="preloader" id="loader-style">
+        <div class="preloader-wrap">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Start Section-title Area -->
+    <div class="section-title mb-0 bg-color ptb-15">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <a class="text-white" onclick="window.history.go(-1); return false;">
+                        <i class="ri-arrow-left-s-line"></i>
+                        Student Detail
+                    </a>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Section-title Area -->
+
+    <div class="bg-color-f5f8ff border-radius-20">
+        <div class="pt-30"></div>
+        <div class="container">
+            <div class="section-title left-title">
+                <h2>{{student_data.name}}</h2>
+            </div>
+
+
+
+
+
+            <ul class=" nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab" aria-controls="home" aria-selected="true">Personal Details</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                        type="button" role="tab" aria-controls="profile" aria-selected="false">Syllabus</button>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="contact-form custom">
+                        <br>
+                        <form method="post" action="{% url 'student_detail_page' student_data.id %}" 
+                        enctype="multipart/form-data" id="form_id">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                <!-- <input type="text" name="name" id="name" class="form-control" value="Salman Afroz"> -->
+                                {{form.name}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Father Name</label>
+                                <!-- <input type="text" name="name" id="name" class="form-control" value="Ayaz Afroz"> -->
+                                {{form.father_name}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                    data-error="Write your message"></textarea> -->
+                                    {{form.address}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Aadhaar Number</label>
+                                <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                                data-error="Write your message"></textarea> -->
+                                {{form.aadhaar_number}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Aadhaar(Front Photo)</label>
+                                <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                                                    data-error="Write your message"></textarea> -->
+                                {{form.front_adhaar}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Aadhaar (Back Photo)</label>
+                                <!-- <textarea name="message" class="form-control" id="message" cols="30" rows="6" required
+                                                                                    data-error="Write your message"></textarea> -->
+                                {{form.back_adhaar}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            {% if maktab_list.count > 1 %}
+                            <div class="form-group">
+                                <label>Maktab</label>
+                                <!-- <input type="text" name="name" id="name" class="form-control" value="Salman Afroz"> -->
+                                {{form.maktab}}
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            {% endif %}
+                            <div>
+                                <button type="submit" class="default-btn" onclick="button_click(this, 'form_id')">
+                                    Update
+                                </button>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <br>
+                    <div class="bg-color-f5f8ff border-radius-20">
+                        <!-- Start Action sheets Area -->
+                        <div class="action-sheets-area ptb-30">
+                            <div class="container">
+                                <ul class="action-sheets-list text-start">
+                                    {% for data in final_data %}
+                                    <li>
+                                        {% if data.s_date  %}
+                                            {% if data.e_date %}
+                                            <button class="btn btn-success text-start mb-2" type="button"
+                                                id="data_{{data.s_id}}" onclick="show_data(this)" data-bs-toggle="offcanvas"   data-bs-target="#login">
+                                                {{data.s_name}}
+                                            </button>
+                                            {% else %}
+                                            <button class="btn btn-info text-start mb-2" type="button" data-bs-toggle="offcanvas"   data-bs-target="#login" id="data_{{data.s_id}}" onclick="show_data(this)">
+                                                {{data.s_name}}
+                                            </button>
+                                            {% endif %}
+                                        {% else %}
+                                        <!-- {#% elif not data.s_start and not data.e_start %} -->
+                                        <button class="btn btn-primary text-start mb-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#login" id="data_{{data.s_id}}" onclick="show_data(this)">
+                                            {{data.s_name}}
+                                        </button>
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Start Action sheets Area -->
+                        <!-- Start Login Area -->
+                        <div class="offcanvas offcanvas-bottom custom" tabindex="-1" id="login">
+                            <div class="offcanvas-body small">
+
+                                <form class="logon-form" method="post" action="{% url 'student_syllabus_status' %}" id="status_form">
+                                    {% csrf_token %}
+                                    <div class="form-group" style="display: none;">
+                                        <label>status Id</label>
+                                        <input type="text" class="form-control" id="status_id", name="status_id">
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+                                        <label>student Id</label>
+                                        <input type="text" class="form-control" id="" value="{{student_data.id}}" name="student_id">
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+                                        <label>syllabus Id</label>
+                                        <input type="text" class="form-control" id="syllabus_id" name="syllabus_id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date" class="form-control" id="start_date" name="start_date">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" class="form-control" id="end_date" name="end_date">
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="text-danger" id="error_info" ></span>
+                                    </div>
+
+                                    <div class="">
+                                        <button type="button" class="default-btn" onclick="submit_form(this)">
+                                            Update
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Login Area -->
+                    </div>
+                </div>
+            </div>
+            <div class="pb-30"></div>
+            <!-- Start Age Check Area -->
+            
+            <!-- End Age Check Area -->
+        </div>
+
+
+
+        <!-- Links of JS File -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/carousel-thumbs.min.js' %}"></script>
+        <script src="{% static 'assets/js/wow.js' %}"></script>
+        <script src="{% static 'assets/js/magnific-popup.min.js' %}"></script>
+        <script src="{% static 'assets/js/dark-mode-switch.min.js' %}"></script>
+        <script src="{% static 'assets/js/ma5-menu.min.js' %}"></script>
+        <script src="{% static 'assets/js/calendar.js' %}"></script>
+        <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+        <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+        <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'assets/js/apex-custom-pie-donut-chart.js' %}"></script>
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+<script>
+    function show_data(t){
+        // $("#login").modal('show');
+        var syllabus_id = t.id.split('_')[1];
+        var student_data = {{ final_data | safe }}
+        // var student_json = student_data.replace(/[^\x20-\x7E]/g, '');
+        // const doc = new DOMParser().parseFromString(student_data, "text/html");
+        // var student_json = JSON.stringify(doc.documentElement.textContent);
+        // console.log('final', student_data[0])
+
+        for(var i=0; i < student_data.length; i++){
+            var each_data = student_data[i];
+            // console.log('each', each_data)
+            if(each_data.s_id == syllabus_id){
+                document.getElementById('start_date').value = each_data.s_date;
+                document.getElementById('end_date').value = each_data.e_date;
+                document.getElementById('status_id').value = each_data.status_id;
+                document.getElementById('syllabus_id').value = syllabus_id;
+                // document.getElementById(t)
+            }
+        }
+    }
+
+    function submit_form(t){
+        var s_date = document.getElementById('start_date').value;
+        var e_date = document.getElementById('end_date').value;
+        t.setAttribute('disabled', 'disabled');
+        // Change the "Submit" text
+        t.innerHTML = 'Please wait...';
+
+
+        if(e_date){
+            if(s_date){
+                if(s_date > e_date){
+                    document.getElementById('error_info').innerHTML = 'Start date is greater than End date';
+                    t.disabled = false;
+                    t.innerHTML = 'Update';
+                }else{
+                    document.getElementById('status_form').submit();
+                }
+            }else{
+                document.getElementById('error_info').innerHTML = 'You are assigning End date without Start date';
+                t.disabled = false;
+                t.innerHTML = 'Update';
+
+            }
+        }else{
+            document.getElementById('status_form').submit();
+            // button_click(btn, 'status_form');
+        }
+
+    }
+
+    
+    function button_click(e, form_id) {
+        var form = document.getElementById(form_id);
+        // var submitButton = document.getElementById(e.id);
+
+        form.addEventListener('submit', function () {
+            $("cover-spin").show(0);
+        // Disable the submit button
+            e.setAttribute('disabled', 'disabled');
+        // Change the "Submit" text
+            e.innerHTML = 'Please wait...';
+
+        }, false);
+    }
+    
+</script>
+
+</html>

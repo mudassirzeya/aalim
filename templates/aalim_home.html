@@ -1,0 +1,244 @@
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links Of CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/ma5-menu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/dark-mode.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}">
+    <!-- Title -->
+    <title>IS Alim</title>
+</head>
+
+<body>
+    <!-- Start Preloader Area -->
+    <div class="preloader" id="loader-style">
+        <div class="preloader-wrap">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Start Navbar Area -->
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col">
+                    <div class="brand-wrap">
+                        <button class="ma5menu__toggle" type="button">
+                            <span class="ma5menu__icon-toggle"></span>
+                            <span class="ma5menu__sr-only">Menu</span>
+                        </button>
+                        <h2>
+                            <a href="">Alim</a>
+                        </h2>
+                    </div>
+
+                    <ul class="site-menu">
+                        <li>
+                            <img src="{% static 'assets/images/menu-icon/icon-14.png' %}" alt="Images">
+                            <a href="{% url 'user_logout' %}">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar Area -->
+
+    <div class="bg-color-f5f8ff border-radius-20">
+        <!-- Start Features Area -->
+        <div class="features-area ptb-30">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Janab {{request.user.first_name}}</h2>
+                </div>
+
+
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Total Students</th>
+                            <td>{{all_student.count}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <br>
+                <a class="btn btn-primary btn-sm mb-2" href="{% url 'add_new_student' %}" style="font-size: 15px">
+                    نیا طالب علم شامل کریں
+                </a>
+                <br>
+
+                <form class="search-forms">
+                    <div class="form-group style-three">
+                        {% if searched_text %}
+                        <input type="text" class="form-control" placeholder="Search..." name="text" value="{{searched_text}}">
+                        {% else %}
+                        <input type="text" class="form-control" placeholder="Search..." name="text">
+                        {% endif %}
+                    </div>
+                    {% if maktab_list.count > 1 %}
+                    <div class="form-group style-three">
+                        <select class="form-select" name="select_maktab">
+                            {% if maktab_id %}
+                                {% for each_maktab in maktab_list %}
+                                    {% if each_maktab.id == maktab_id %}
+                                    <option value="{{each_maktab.id}}">{{each_maktab.maktab_name}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                            <option value="">Search from Case-Type</option>
+                            {% endif %}
+                            {% for maktab in maktab_list %}
+                            <option value="{{maktab.id}}">{{maktab.maktab_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="{% url 'aalim_home_page' %}" class="btn btn-danger btn-sm mb-2" style="font-size: 15px;">
+                                Reset Filter
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-success btn-sm mb-2" style="font-size: 15px;" onclick="button_click(this, 'form_id')">
+                                <i class="fas fa-search">&nbsp;</i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- End Features Area -->
+
+        <!-- Start Best Support Area -->
+        {% for student in all_student %}
+        <div class="best-support-area pt-10">
+            <div class="container">
+                <div class="single-support">
+
+                    <div class="support-content">
+                        <h3>{{student.name}}</h3>
+                        <p>Father Name: {{student.father_name}}</p>
+                        <a href="{% url 'student_detail_page' student.id %}" class="read-more">
+                            View Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- End Best Support Area -->
+        <div class="row justify-content-center m-3">
+            <!-- <div class="">&nbsp;</div> -->
+            <div class="col-6">
+                {% if searched_text or maktab_id %}
+                    {%if all_student.has_previous %}
+                    <a class="btn btn-primary"
+                        href="{% url 'aalim_home_page' %}?page={{all_student.previous_page_number}}&text={{searched_text}}&select_maktab={{maktab_id}}">
+                        <i class="fas fa-angle-double-left"></i> Previous Page</a>
+                    {% endif %}
+                {% else %}
+                    {%if all_student.has_previous %}
+                    <a class="btn btn-primary" href="{% url 'aalim_home_page' %}?page={{all_student.previous_page_number}}">
+                        <i class="fas fa-angle-double-left"></i> Previous Page</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <!-- <span>{{all_page.number}}</span>  -->
+        
+            <div class="col-6">
+                {% if searched_text or maktab_id %}
+                    {%if all_student.has_next %}
+                    <a class="btn btn-success"
+                        href="{% url 'aalim_home_page' %}?page={{all_student.next_page_number}}&text={{searched_text}}&select_maktab={{maktab_id}}">
+                        Next Page <i class=" fas fa-angle-double-right"></i></a>
+                    {% endif %}
+                {% else %}
+        
+                    {%if all_student.has_next %}
+                    <a class="btn btn-success" href="{% url 'aalim_home_page' %}?page={{all_student.next_page_number}}">
+                        Next Page <i class=" fas fa-angle-double-right"></i></a>
+                    {% endif %}
+        
+                {% endif %}
+            </div>
+            <!-- <div class="col-2">&nbsp;</div> -->
+        
+        </div>
+
+        <br>
+
+    </div>
+
+
+
+
+    <!-- Links of JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/carousel-thumbs.min.js' %}"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+    <script src="{% static 'assets/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/dark-mode-switch.min.js' %}"></script>
+    <script src="{% static 'assets/js/ma5-menu.min.js' %}"></script>
+    <script src="{% static 'assets/js/calendar.js' %}"></script>
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/js/apex-custom-pie-donut-chart.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+<script>
+    function button_click(e, form_id) {
+            var form = document.getElementById(form_id);
+            // var submitButton = document.getElementById(e.id);
+
+            form.addEventListener('submit', function () {
+                $("cover-spin").show(0);
+                // Disable the submit button
+                e.setAttribute('disabled', 'disabled');
+                // Change the "Submit" text
+                e.innerHTML = 'Please wait...';
+
+            }, false);
+        }
+</script>
+</html>

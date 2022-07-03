@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+{% for message in messages %}
+<p class="text-danger text-center" id="messages">{{message}}</p>
+{% endfor %}
+<div class="float-right">
+    <button class="btn btn-warning text-white" data-toggle="modal" data-target="#add_user_modal"><i
+            class="fas fa-plus"></i> Add New</button>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered" id="file_export">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Syllabus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for syllabus in all_syllabus %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{syllabus.subject}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- add admin modal  -->
+<div class="modal fade" id="add_user_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info" id="exampleModalLongTitle">Add New Subject
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'syllabus_page' %}" id="form_id">
+                    {% csrf_token %}
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Syllabus</label>
+                        <input type="text" class="form-control" placeholder="Enter Text.." name="name" id="" required>
+                    </div>
+                    <!-- <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">phone</label>
+                        <input type="number" class="form-control" placeholder="" name="phone" id="" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Email</label>
+                        <input type="text" class="form-control" placeholder="email" name="email" id="" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Passcode</label>
+                        <input type="text" class="form-control" placeholder="password.." name="passcode" id="" required>
+                    </div> -->
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-success" type="submit" onclick="button_click(this, 'form_id')">Add</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% endblock %}
