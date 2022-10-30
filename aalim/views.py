@@ -328,6 +328,7 @@ def aalim_home_page(request):
     aalim_qs = Alim.objects.get(user=staffProfile)
     my_maktab = aalim_qs.maktab.all()
     all_student_obj = Student.objects.filter(Q(maktab__in=my_maktab))
+    total_student = all_student_obj.count()
     all_student = all_student_obj
     searched_text = request.GET.get('text')
     maktab_id = request.GET.get('select_maktab')
@@ -360,7 +361,8 @@ def aalim_home_page(request):
     context = {'all_student': page,
                'maktab_list': my_maktab,
                'searched_text': searched_text,
-               'maktab_id': maktab_id}
+               'maktab_id': maktab_id,
+               'total_student': total_student}
     return render(request, 'aalim_home.html', context)
 
 
@@ -416,7 +418,7 @@ def student_detail_page(request, pk):
             end_date = str(status.end_date)
         else:
             end_date = ''
-        print('date', start_date, end_date)
+        # print('date', start_date, end_date)
         status_id = status.id
         student_status[subject_id] = {
             'status_id': status_id, 'start_date': start_date,
@@ -428,7 +430,7 @@ def student_detail_page(request, pk):
         syllabus_id = syllabus.id
         syllabus_name = syllabus.subject
         status_id = 0
-        print('syllabus name', syllabus_name)
+        # print('syllabus name', syllabus_name)
         try:
             this_syllabus_status = student_status[syllabus_id]
         except:
@@ -437,7 +439,7 @@ def student_detail_page(request, pk):
             status_id = this_syllabus_status['status_id']
         try:
             start_date = student_status[syllabus_id]['start_date']
-            print('startdate', str(start_date))
+            # print('startdate', str(start_date))
         except:
             start_date = ''
         try:
@@ -454,7 +456,7 @@ def student_detail_page(request, pk):
                        request.FILES or None, instance=student_data)
     form.fields['maktab'].queryset = maktab_list
     # json_final = json.loads(final)
-    print('final', final)
+    # print('final', final)
     if request.method == "POST":
         if form.is_valid():
             if maktab_list.count() > 1:
@@ -502,7 +504,7 @@ def student_syllabus_status(request):
         else:
             end_date = None
 
-        print('date', start_date, 'k', end_date)
+        # print('date', start_date, 'k', end_date)
         if status_id == '0':
             SyllabusStatus.objects.create(
                 student=this_student,

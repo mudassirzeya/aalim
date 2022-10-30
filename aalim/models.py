@@ -54,6 +54,7 @@ class Student(models.Model):
         Maktab, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True, blank=True)
     father_name = models.CharField(max_length=200, null=True, blank=True)
+    mobile_number = models.CharField(max_length=100, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     aadhaar_number = models.CharField(max_length=100, null=True, blank=True)
     front_adhaar = models.ImageField(

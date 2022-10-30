@@ -21,6 +21,10 @@ class StudentForm(forms.ModelForm):
                 'class': "form-control",
                 'required': "required",
             }),
+            'mobile_number': forms.TextInput(attrs={
+                'class': "form-control",
+                'required': "required",
+            }),
             'address': forms.Textarea(attrs={
                 'class': "form-control",
                 'required': "required",
