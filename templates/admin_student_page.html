@@ -62,7 +62,8 @@
                 <th>Student Id</th>
                 <th>Student Name</th>
                 <th>Father Name</th>
-                <th>Phone Number</th>
+                <th>Student Phone</th>
+                <th>Parents Phone</th>
                 <th>Address</th>
                 <th>Aadhaar Number</th>
             </tr>
@@ -73,7 +74,8 @@
                 <td>{{student.id}}</td>
                 <td>{{student.name}}</td>
                 <td>{{student.father_name}}</td>
-                <td>{{student.mobile_number}}</td>
+                <td>{{student.student_phone}}</td>
+                <td>{{student.parent_phone}}</td>
                 <td>{{student.address}}</td>
                 <td>{{student.aadhaar_number}}</td>
             </tr>
@@ -150,9 +152,14 @@
                         {{form.father_name}}
                     </div>
                     <div class="form-group mb-4">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Phone</label>
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Student Phone</label>
                         <!-- <input type="number" class="form-control" placeholder="" name="phone" id="" required> -->
-                        {{form.mobile_number}}
+                        {{form.student_phone}}
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Parent Phone</label>
+                        <!-- <input type="number" class="form-control" placeholder="" name="phone" id="" required> -->
+                        {{form.parent_phone}}
                     </div>
                     <div class="form-group mb-4">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Address</label>
